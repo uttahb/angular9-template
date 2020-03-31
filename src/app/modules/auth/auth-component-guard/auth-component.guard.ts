@@ -1,21 +1,21 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   UrlTree,
   Router
-} from "@angular/router";
-import { Observable } from "rxjs";
-import { LoggedinUserService } from "../loggedin-user/loggedin-user.service";
-import { map } from "rxjs/operators";
+} from '@angular/router';
+import { Observable } from 'rxjs';
+import { LoggedinUserService } from '../loggedin-user/loggedin-user.service';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthComponentGuard implements CanActivate {
   constructor(
     private userService: LoggedinUserService,
     private router: Router
-  ) {}
+  ) { }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -26,7 +26,7 @@ export class AuthComponentGuard implements CanActivate {
     | UrlTree {
     const loggedinUser = this.userService.isLoggedin().getValue();
     if (!loggedinUser) {
-      this.router.navigate(["/login"]);
+      this.router.navigate(['/public/login']);
     }
     return !!loggedinUser;
   }

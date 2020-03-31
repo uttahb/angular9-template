@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { map, switchMap, share } from "rxjs/operators";
-import { BehaviorSubject, of } from "rxjs";
+import { Injectable } from '@angular/core';
+import { map, switchMap, share } from 'rxjs/operators';
+import { BehaviorSubject, of } from 'rxjs';
 @Injectable()
 export class LoggedinUserService {
-  private _loggedinUser: any = null;
+  private _loggedinUser: any = true;
   private _loggedinUser$ = new BehaviorSubject(this.getLoggedinUser());
-  constructor() {}
+  constructor() { }
 
   getLoggedinUser() {
     return this._loggedinUser;
